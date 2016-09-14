@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="480.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.jcross.ispolnenie4.ctrl.DataURMController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="TImport" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+              <columns>
+                  <TableColumn fx:id="C_id" prefWidth="38.0" text="№" />
+                <TableColumn fx:id="C_importDate" editable="false" prefWidth="157.0" text="Дата импорта" />
+                <TableColumn fx:id="C_reportDate" editable="false" minWidth="0.0" prefWidth="113.0" text="Отчетная дата" />
+                  <TableColumn fx:id="C_note512" editable="false" prefWidth="286.0" text="Примечание" />
+              </columns>
+               <VBox.margin>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </VBox.margin>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#contextMenuDelete" text="Удалить" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#ActDialogImport" text="Импорт" />
+               </children>
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

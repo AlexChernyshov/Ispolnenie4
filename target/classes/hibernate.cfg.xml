@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://192.168.0.7:5432/BigBase</property>
+    <property name="hibernate.connection.username">arest</property>
+    <property name="hibernate.connection.password">QWE005rd*9788960</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.default_schema">urm</property> 
+    <property name="hibernate.jdbc.batch_size">40</property>   
+    <property name="hibernate.format_sql">true</property>
+    <property name="cache.use_second_level_cache">false</property>
+    <property name="hibernate.connection.pool_size">1</property>
+    <property name="current_session_context_class">thread</property>
+    
+    <mapping class="ru.jcross.ispolnenie4.models.Facialacc"/>
+    <mapping class="ru.jcross.ispolnenie4.models.Subsidycls"/>
+    <mapping class="ru.jcross.ispolnenie4.models.Kbk"/>
+    <mapping class="ru.jcross.ispolnenie4.models.Kosgu"/>
+    <mapping class="ru.jcross.ispolnenie4.models.ImportDate"/>
+    <mapping class="ru.jcross.ispolnenie4.models.SectionField"/>
+    <mapping class="ru.jcross.ispolnenie4.models.DataPlus"/>
+    <mapping class="ru.jcross.ispolnenie4.models.Gruch"/>
+    <mapping class="ru.jcross.ispolnenie4.models.ReportCaption"/>
+    <mapping class="ru.jcross.ispolnenie4.models.ReportSQL"/>
+  </session-factory>
+</hibernate-configuration>

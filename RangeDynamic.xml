@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rangeDynamic ident="1">    
+    <Range_Name>datarange</Range_Name>
+    <Ssql>
+	REFRESH MATERIALIZED VIEW public.mvw_progr_dengi;{split}
+	DROP  VIEW  IF EXISTS tmp1,tmp0;{split}
+	CREATE TEMPORARY VIEW tmp0 AS 
+SELECT p.subsidy, p.ls, p.ostat, 
+CASE p.kbk WHEN '0' THEN p.insumma-p.outsumma 
+ELSE 0.00 END AS insumma ,
+CASE p.kbk WHEN '0' THEN  0.00
+ELSE p.outsumma-p.insumma END AS outsumma
+FROM public.mvw_progr_dengi AS p
+LEFT OUTER JOIN urm.importdate ON p.impdate = urm.importdate.id
+WHERE (urm.importdate.id =ondateid) typeuch ;{split}
+CREATE TEMPORARY VIEW tmp1 AS SELECT 1 AS lvl, urm.facialacc.namep AS  namep, subsidy ,ls , SUM(ostat) AS ostat,sum(insumma) AS insumma,SUM(outsumma) AS outsumma,
+CASE SUM(ostat+insumma) WHEN 0 THEN 0 ELSE trunc(SUM(outsumma)/(SUM(ostat)+sum(insumma)),2)
+END AS procent, SUM(ostat) +sum(insumma)-SUM(outsumma) AS ostatok
+  FROM tmp0
+LEFT OUTER JOIN urm.facialacc ON tmp0.ls = urm.facialacc.id 
+GROUP BY subsidy ,urm.facialacc.namep,tmp0.ls 
+UNION
+SELECT 2 AS lvl, urm.subsidycls.namek AS  namep, subsidy ,0 , SUM(ostat) AS ostat,sum(insumma) AS insumma,SUM(outsumma) AS outsumma,
+CASE SUM(ostat+insumma) WHEN 0 THEN 0 ELSE trunc(SUM(outsumma)/(SUM(ostat)+sum(insumma)),2)
+END AS procent, SUM(ostat) +sum(insumma)-SUM(outsumma) AS ostatok
+  FROM tmp0
+LEFT OUTER JOIN urm.subsidycls ON tmp0.subsidy = urm.subsidycls.code 
+GROUP BY subsidy ,urm.subsidycls.namek
+UNION
+SELECT 3 AS lvl, 'ИТОГО' AS  namep, '999999999' ,999999999 , SUM(ostat) AS ostat,sum(insumma) AS insumma,SUM(outsumma) AS outsumma,
+CASE SUM(ostat+insumma) WHEN 0 THEN 0 ELSE trunc(SUM(outsumma)/(SUM(ostat)+sum(insumma)),2)
+END AS procent, SUM(ostat) +sum(insumma)-SUM(outsumma) AS ostatok
+  FROM tmp0
+LEFT OUTER JOIN urm.subsidycls ON tmp0.subsidy = urm.subsidycls.code 
+GROUP BY 1;
+
+{split}SELECT lvl,	namep, subsidy, ls, ostat, insumma, outsumma, procent, ostatok 
+FROM tmp1 ORDER BY tmp1.subsidy,lvl DESC, tmp1.procent;
+</Ssql>
+<Cursor ident="0">
+        <TargetCell ident="0">
+            <From>lvl</From>
+            <ToCell>lvl</ToCell>
+			<Val>0</Val>
+        </TargetCell> 
+		<TargetCell ident="1">           
+            <From>namep</From>           
+            <ToCell>name</ToCell>  
+			<Val>0</Val>			
+        </TargetCell>
+		<TargetCell ident="2">           
+            <From>subsidy</From>           
+            <ToCell>subsidy</ToCell>
+			<Val>0</Val>
+        </TargetCell>
+		<TargetCell ident="3">           
+            <From>ls</From>           
+            <ToCell>ls</ToCell>          
+			<Val>0</Val>
+        </TargetCell>
+		<TargetCell ident="4">           
+            <From>ostat</From>           
+            <ToCell>ostat</ToCell>          
+			<Val>0</Val>
+        </TargetCell>
+		<TargetCell ident="5">           
+            <From>insumma</From>           
+            <ToCell>insumma</ToCell>          
+			<Val>0</Val>
+        </TargetCell>
+		<TargetCell ident="6">           
+            <From>outsumma</From>           
+            <ToCell>outsumma</ToCell>          
+			<Val>0</Val>
+        </TargetCell>
+		<TargetCell ident="7">           
+            <From>procent</From>           
+            <ToCell>procent</ToCell>          
+			<Val>0</Val>
+        </TargetCell>
+		<TargetCell ident="8">           
+            <From>ostatok</From>           
+            <ToCell>ostatok</ToCell>          
+        </TargetCell>   		
+</Cursor>
+</rangeDynamic>

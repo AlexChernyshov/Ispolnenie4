@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.jcross.ispolnenie4.ctrl.FXMLDocumentController">
+   <children>
+      <VBox layoutX="404.0" layoutY="374.0" prefHeight="600.0" prefWidth="996.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Файл">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#menuImport" text="Импорт УРМ АС Бюджет" />
+                        <MenuItem mnemonicParsing="false" text="Разделы БД" />
+                    <MenuItem mnemonicParsing="false" text="Данные " />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Справочники">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#menuUchrejdenie" text="Организация" />
+                        <MenuItem mnemonicParsing="false" text="КФСР" />
+                        <MenuItem mnemonicParsing="false" text="КЦСР" />
+                        <MenuItem mnemonicParsing="false" text="КВР" />
+                        <MenuItem mnemonicParsing="false" text="КоСГУ" />
+                        <MenuItem mnemonicParsing="false" text="Субсидии" />
+                        <MenuItem mnemonicParsing="false" text="Мероприятия" />
+                        <MenuItem mnemonicParsing="false" text="Тип средств" />
+                        <MenuItem mnemonicParsing="false" text="Направления" />
+                        <MenuItem mnemonicParsing="false" text="Трансферт" />
+                        <MenuItem mnemonicParsing="false" text="Регион" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Отчеты">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Настройка отчетов" onAction="#menuReportOptions"/>
+                    <MenuItem mnemonicParsing="false" text="Сформировать" onAction="#menuReportGenerate"/>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Сервис">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Параметры" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="640.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

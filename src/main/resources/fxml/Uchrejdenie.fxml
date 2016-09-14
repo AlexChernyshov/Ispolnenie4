@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="999.0" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.jcross.ispolnenie4.ctrl.UchrejdenieController">
+   <children>
+      <VBox prefHeight="581.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="32.0" prefWidth="979.0" VBox.vgrow="NEVER">
+              <items>
+                <Button mnemonicParsing="false" text="Excel" />
+                  <Button mnemonicParsing="false" onAction="#importUpdate" text="Обновление" />
+              </items>
+            </ToolBar>
+            <SplitPane dividerPositions="0.73" prefHeight="581.0" prefWidth="999.0" VBox.vgrow="ALWAYS">
+               <items>
+                  <AnchorPane prefHeight="400.0" prefWidth="337.0">
+                     <children>
+                        <TableView fx:id="TblUchrejdenie" layoutX="53.0" layoutY="70.0" onMousePressed="#clickTable" prefHeight="427.0" prefWidth="426.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="LS" prefWidth="75.0" text="ЛС" />
+                              <TableColumn fx:id="nameP" prefWidth="170.0" text="Наименование полное" />
+                            <TableColumn fx:id="nameK" prefWidth="205.0" text="Наименование краткое" />
+                              <TableColumn fx:id="dateOpen" prefWidth="112.0" text="Дата открытия" />
+                              <TableColumn fx:id="dateClose" prefWidth="97.0" text="Дата закрытия" />
+                          </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#contextMenuDelete" text="Удалить" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="42.0" layoutY="86.0" prefHeight="427.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox prefHeight="382.0" prefWidth="200.0" spacing="12.0">
+                                 <children>
+                                    <Label text="Текущая запись " />
+                                    <TextField fx:id="txtLS" promptText="Лицевой счёт" />
+                                    <TextArea fx:id="txtNameP" prefHeight="63.0" prefWidth="180.0" promptText="Полное наименование" />
+                                    <TextArea fx:id="txtNameK" prefHeight="63.0" prefWidth="180.0" promptText="Краткое наименование" />
+                                    <TextField fx:id="txtOpen" promptText="Дата открытия" />
+                                    <TextField fx:id="txtClose" promptText="Дата закрытия" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                              <HBox prefHeight="48.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#btnSave" prefHeight="25.0" prefWidth="74.0" text="Сохранить" HBox.hgrow="NEVER" />
+                                    <Pane prefHeight="25.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" onAction="#btnCancel" prefHeight="25.0" prefWidth="67.0" text="Отмена" HBox.hgrow="NEVER" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>
